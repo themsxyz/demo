@@ -3,116 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salary System - বাংলা সংখ্যা</title>
+  <title>Salary System - বাংলা সংখ্যা | Smart Keyboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body { 
       font-family: 'Book Antiqua', serif; 
-      background:#f5f5f5; 
-      padding:20px; 
+      background: #eef2f3; 
+      padding: 30px 20px; 
+      margin: 0;
     }
 
     .page { 
-      width:800px; 
-      margin:auto; 
-      background:white; 
-      padding:20px; 
-      border:1px solid black; 
+      width: 900px; 
+      max-width: 100%;
+      margin: auto; 
+      background: white; 
+      padding: 25px 30px; 
+      border-radius: 20px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+      border: none;
     }
 
     .header { 
-      display:flex; 
-      align-items:center; 
-      border-bottom:2px solid black; 
-      padding-bottom:10px; 
+      display: flex; 
+      align-items: center; 
+      border-bottom: 3px solid #1e3c72; 
+      padding-bottom: 15px; 
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      position: relative;
     }
 
     .logo {
-      width: 120px;
-      transform: translate(40px, 0px);
+      width: 110px;
+      transform: translate(10px, 0px);
     }
 
     .header-text { 
-      flex:1; 
-      text-align:center; 
-      position:relative; 
+      flex: 1; 
+      text-align: center; 
+      position: relative; 
+      padding-bottom: 28px;
     }
 
     .school-name { 
-      font-family:'Wide Latin', serif; 
-      font-size:28px; 
-      font-weight:bold; 
+      font-family: 'Wide Latin', serif; 
+      font-size: 26px; 
+      font-weight: bold; 
+      letter-spacing: 1px;
     }
 
     .school-name-bn { 
-      font-family:'Tiro Bangla', serif; 
-      font-size:40px; 
-      margin-top:18px; 
+      font-family: 'Tiro Bangla', serif; 
+      font-size: 36px; 
+      margin-top: 12px; 
+      color: #1e3c72;
     }
 
     .emis { 
-      position:absolute; 
-      right:50px; 
-      top:40px; 
-      font-size:14px; 
-      font-family:'Book Antiqua', serif; 
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 15px;
+      font-family: 'Book Antiqua', serif;
+      background: transparent;
+      padding: 0;
+      color: #555;
     }
 
     .sub { 
-      font-size:20px;
+      font-size: 18px;
+      color: #444;
     }
 
     h3 { 
-      text-align:center; 
-      margin-top:10px; 
-      font-size:25px; 
+      text-align: center; 
+      margin: 20px 0 15px 0; 
+      font-size: 28px;
+      font-weight: 600;
+      color: #1e3c72;
+      border-bottom: 2px dashed #ccc;
+      display: inline-block;
+      padding-bottom: 6px;
+      width: auto;
     }
 
-    /* টেবিলের ফন্ট: তিরো বাংলা (বাংলা ফন্ট) */
+    /* টেবিল - তিরো বাংলা ফন্ট - print-ready black borders */
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
       font-family: 'Tiro Bangla', 'Segoe UI', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     th, td {
-      border: 1px solid black;
-      padding: 10px;
+      border: 1px solid #000000;  /* Solid black border for print & screen */
+      padding: 12px 8px;
       text-align: center;
       font-family: 'Tiro Bangla', 'Segoe UI', sans-serif;
-      font-size: 24px;
+      font-size: 22px;
     }
 
-    /* ইনপুট ফিল্ডেও বাংলা ফন্টের প্রভাব রাখা */
-    input {
+    th {
+      background-color: #f8fafc;
+      font-weight: bold;
+      font-size: 24px;
+      color: #0f2b4d;
+      border: 1px solid #000000;
+    }
+
+    /* ইনপুট ফিল্ড - কাস্টম, সুন্দর, বাংলা ফন্ট */
+    input.salary-input {
       width: 90%;
-      padding: 5px;
+      padding: 8px 12px;
       text-align: center;
       font-family: 'Tiro Bangla', monospace;
-      font-size: 22px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
+      font-size: 20px;
+      border: 1px solid #cbd5e0;
+      border-radius: 12px;
       background: #fffef7;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+    }
+    input.salary-input:focus {
+      outline: none;
+      border-color: #1e3c72;
+      box-shadow: 0 0 0 3px rgba(30,60,114,0.2);
     }
 
-    .btn { 
-      margin-top:10px; 
-      padding:10px 20px; 
-      font-size:16px; 
-      cursor:pointer; 
+    /* মোট ঘর হাইলাইট */
+    tfoot th {
+      background-color: #e9f0f9;
+      font-size: 24px;
+      border: 1px solid #000000;
+    }
+    #total {
+      font-weight: bold;
+      color: #2c5a2e;
+      background-color: #e6f4e8;
     }
 
+    /* বাটন ডিজাইন */
+    .btn-group {
+      text-align: center;
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #1e3c72, #2b4c8a);
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+      font-family: 'Book Antiqua', 'Segoe UI', sans-serif;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #2b4c8a, #1e3c72);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    /* মাস সিলেক্টর - ডেট পিকার কাস্টম স্টাইল */
+    .month-select {
+      text-align: center;
+      margin: 15px 0 5px;
+    }
+    .month-select input {
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 40px;
+      border: 1px solid #cbd5e0;
+      background: white;
+      font-family: 'Book Antiqua', monospace;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .month-select input:hover {
+      border-color: #1e3c72;
+    }
+    .month-select input:focus {
+      outline: none;
+      border-color: #1e3c72;
+      box-shadow: 0 0 0 3px rgba(30,60,114,0.2);
+    }
+    ::-webkit-calendar-picker-indicator {
+      background-color: #eef2f3;
+      padding: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    /* ========== PRINT STYLES: Black borders enforced, no input borders visible ========== */
     @media print {
-      .btn, .month-select { display:none; }
-      input { border:none; background:transparent; }
-      .page { border:none; width:100%; margin:0; }
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .page {
+        width: 100%;
+        margin: 0;
+        padding: 10px 12px;
+        border-radius: 0;
+        box-shadow: none;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+      }
+      .btn-group, .month-select {
+        display: none;
+      }
+      /* Remove input box border and background for print — show clean text like table cell */
+      input.salary-input {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 4px;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        font-family: 'Tiro Bangla', serif;
+        color: black;
+      }
+      /* Ensure table borders are solid black */
+      table, th, td {
+        border: 1px solid #000000 !important;
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid #000000 !important;
+      }
+      .header {
+        border-bottom-width: 1px;
+        margin-bottom: 5px;
+        padding-bottom: 8px;
+      }
+      .logo {
+        width: 150px;
+        transform: translate(40px, 0px);
+      }
+      .school-name {
+        font-size: 27px;
+      }
+      .school-name-bn {
+        font-size: 32px;
+        margin-top: 10px;
+      }
+      .emis {
+        position: absolute;
+        top: 34px;
+        right: 20px;
+        text-align: right;
+        background: none;
+        font-size: 15px;
+        margin-top: 0;
+        padding: 0;
+      }
+      .sub {
+        font-size: 22px;
+      }
+      h3 {
+        font-size: 28px;
+        margin: 8px 0;
+      }
+      table {
+        font-size: 22px;
+        margin-top: 8px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      th, td {
+        padding: 5px 4px;
+        font-size: 20px;
+      }
+      th {
+        font-size: 26px;
+      }
+      tfoot th {
+        font-size: 26px;
+      }
+      input.salary-input {
+        font-size: 26px;
+        padding: 2px;
+      }
+      .page, .header, table, tbody, thead, tfoot {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      @page {
+        margin: 0.5cm;
+        size: auto;
+      }
     }
   </style>
 </head>
@@ -121,7 +321,6 @@
 <div class="page" id="page">
   <div class="header">
     <img class="logo" src="https://res.cloudinary.com/do1dejkkk/image/upload/v1774935468/western_logo_hg9fji.png" alt="Logo">
-
     <div class="header-text">
       <div class="school-name">Western School & College</div>
       <div class="school-name-bn">ওয়েস্টার্ন স্কুল এন্ড কলেজ</div>
@@ -131,17 +330,19 @@
     </div>
   </div>
 
-  <div class="month-select" style="text-align:center; margin-top:10px;">
+  <div class="month-select">
     <input type="month" id="month" onchange="updateTitle()">
   </div>
 
-  <h3 id="title">শিক্ষক বেতন</h3>
+  <div style="text-align:center;">
+    <h3 id="title">শিক্ষক বেতন</h3>
+  </div>
 
   <table id="salaryTable">
     <thead>
       <tr>
         <th>নাম</th>
-        <th>বেতন (টaka)</th>
+        <th>বেতন (টাকা)</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -154,39 +355,39 @@
   </table>
 </div>
 
-<button class="btn" onclick="printPage()">Print / Save PDF</button>
-<button class="btn" onclick="saveToSheet()">Save to Sheet</button>
+<div class="btn-group">
+  <button class="btn" id="printBtn">🖨️ Print / Save PDF</button>
+  <button class="btn" id="saveBtn">📤 Save to Sheet</button>
+</div>
 
 <script>
 // ----------------------------------------------
-// 1. বাংলা সংখ্যা কনভার্টার ফাংশন (Arabic ↔ Bengali)
+// ১. বাংলা ও আরবি ডিজিট কনভার্টার
 // ----------------------------------------------
 const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
 const arabicDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-// আরবি সংখ্যা (0-9) কে বাংলা অঙ্কে রূপান্তর
-function toBengaliNumber(number) {
-  if (number === undefined || number === null || isNaN(number)) return '০';
-  const numStr = number.toString();
+function toBengaliNumber(num) {
+  if (num === undefined || num === null || isNaN(num)) return '০';
+  const numStr = num.toString();
   let result = '';
-  for (let char of numStr) {
-    if (char >= '0' && char <= '9') {
-      result += bengaliDigits[parseInt(char)];
+  for (let ch of numStr) {
+    if (ch >= '0' && ch <= '9') {
+      result += bengaliDigits[parseInt(ch)];
     } else {
-      result += char;  // দশমিক বা ঋণাত্মক চিহ্ন সংরক্ষণ
+      result += ch;
     }
   }
   return result;
 }
 
-// বাংলা অঙ্ক থেকে আরবি সংখ্যা (parse-যোগ্য স্ট্রিং)
-function fromBengaliToArabic(bengaliStr) {
-  if (!bengaliStr) return '';
+function fromBengaliToArabic(str) {
+  if (!str) return '';
   let converted = '';
-  for (let ch of bengaliStr) {
-    const index = bengaliDigits.indexOf(ch);
-    if (index !== -1) {
-      converted += arabicDigits[index];
+  for (let ch of str) {
+    const idx = bengaliDigits.indexOf(ch);
+    if (idx !== -1) {
+      converted += arabicDigits[idx];
     } else {
       converted += ch;
     }
@@ -195,7 +396,7 @@ function fromBengaliToArabic(bengaliStr) {
 }
 
 // ----------------------------------------------
-// 2. শিক্ষক তালিকা (অপরিবর্তিত)
+// ২. শিক্ষক তালিকা
 // ----------------------------------------------
 const teachers = [
   "প্রিন্সিপাল স্যার","আয়শা বেগম","শারমিন আক্তার রকি","জবা শ্রী দেব","শারমিন সুলতানা",
@@ -206,180 +407,221 @@ const teachers = [
 const tbody = document.getElementById("tbody");
 
 // ----------------------------------------------
-// 3. টেবিল রেন্ডার + ইনপুটে বাংলা সংখ্যা হ্যান্ডলিং (কার্যকারিতা অক্ষুণ্ণ)
+// ৩. ইনপুট ফিল্ড তৈরি (ইউজার সহজেই সংখ্যা ইনপুট করতে পারে) + store reference array for keyboard nav
 // ----------------------------------------------
-function attachBengaliInputBehavior(inputElement) {
-  // প্রাথমিকভাবে কোনো ডাটা থাকলে সেট করা (খালি থাকলে কিছু করবে না)
-  if (inputElement.value && inputElement.value.trim() !== "") {
-    let rawArabicValue = fromBengaliToArabic(inputElement.value);
-    let numericVal = parseFloat(rawArabicValue);
-    if (isNaN(numericVal)) numericVal = 0;
-    inputElement.dataset.numValue = numericVal;
-    inputElement.value = toBengaliNumber(numericVal);
-  } else {
-    // ফাঁকা ইনপুট: ডাটা ভ্যালু 0 সেট করা
-    inputElement.dataset.numValue = "0";
-    inputElement.value = "";
+let salaryInputsArray = []; // store { inputElement, rowIndex }
+
+function createSalaryInput(initialValue = 0, rowIndex) {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'salary-input';
+  input.placeholder = '০';
+  input.setAttribute('data-row', rowIndex);
+  
+  let numericValue = initialValue;
+  input.dataset.value = numericValue;
+  input.value = numericValue === 0 ? '' : toBengaliNumber(numericValue);
+  
+  function updateInputFromNumeric() {
+    let num = parseFloat(input.dataset.value);
+    if (isNaN(num)) num = 0;
+    input.dataset.value = num;
+    if (num === 0 && input.value === '') {
+      // keep empty
+    } else {
+      input.value = toBengaliNumber(num);
+    }
+    calculateTotal();
   }
-
-  // ইনপুট ইভেন্ট: ইউজার টাইপ করলেই আরবি/বাংলা যাই হোক -> সংখ্যা কনভার্ট করে বাংলা অঙ্কে দেখাবে,
-  // এবং আসল সংখ্যা dataset এ সংরক্ষণ করবে।
-  inputElement.addEventListener("input", function(e) {
-    let rawInput = e.target.value;
-    // 1. বাংলা অঙ্ক থাকলে আরবিতে কনভার্ট, নাহলে সরাসরি আরবি সংখ্যা ধরবে
-    let arabicVersion = fromBengaliToArabic(rawInput);
-    // 2. সংখ্যায় রূপান্তর (float) - খালি বা অক্ষর থাকলে 0
-    let numericValue = parseFloat(arabicVersion);
-    if (isNaN(numericValue)) numericValue = 0;
-    
-    // 3. dataset এ আসল মান রেখে দিচ্ছি (পরে টোটাল ও সেভে কাজ করবে)
-    inputElement.dataset.numValue = numericValue;
-    
-    // 4. প্রদর্শনের জন্য আবার বাংলা অঙ্কে সেট করা
-    if (rawInput === "" || (arabicVersion.trim() === "")) {
-      // ইউজার পুরো মুছে ফেললে ফাঁকা দেখাবে, কিন্তু dataset এ 0 থাকবে
-      inputElement.value = "";
-      inputElement.dataset.numValue = "0";
+  
+  input.addEventListener('input', function(e) {
+    let raw = e.target.value;
+    let arabicStr = fromBengaliToArabic(raw);
+    let clean = arabicStr.replace(/[^0-9.-]/g, '');
+    let parsed = parseFloat(clean);
+    if (isNaN(parsed)) parsed = 0;
+    input.dataset.value = parsed;
+    if (parsed === 0 && raw === '') {
+      input.value = '';
     } else {
-      inputElement.value = toBengaliNumber(numericValue);
+      input.value = toBengaliNumber(parsed);
     }
-    
-    // টোটাল পুনরায় গণনা
     calculateTotal();
   });
   
-  // ফোকাস আউটেও যেন ঠিক থাকে (বাংলা ফরম্যাট নিশ্চিত)
-  inputElement.addEventListener("blur", function() {
-    let currentNum = parseFloat(inputElement.dataset.numValue);
-    if (isNaN(currentNum)) currentNum = 0;
-    if (currentNum === 0 && inputElement.value === "") {
-      // ফাঁকা থাকলে কিছু করি না
+  input.addEventListener('blur', function() {
+    let num = parseFloat(input.dataset.value);
+    if (isNaN(num)) num = 0;
+    input.dataset.value = num;
+    if (num === 0 && input.value === '') {
+      // empty
     } else {
-      inputElement.value = toBengaliNumber(currentNum);
+      input.value = toBengaliNumber(num);
     }
     calculateTotal();
   });
+  
+  return input;
 }
 
-// টোটাল গণনা (dataset.numValue থেকে read করে, যা সবসময় আরবি সংখ্যা হিসেবে সংরক্ষিত)
-function calculateTotal() {
-  let total = 0;
-  const allInputs = document.querySelectorAll("#tbody input[type='number']");
-  allInputs.forEach(input => {
-    let val = parseFloat(input.dataset.numValue);
-    if (!isNaN(val)) {
-      total += val;
-    }
-  });
-  // মোটের ঘরে বাংলা সংখ্যা দেখানো
-  const totalCell = document.getElementById("total");
-  totalCell.innerText = toBengaliNumber(total);
-}
-
-// সব ইনপুট তৈরি করা এবং কাস্টম বিহেভিয়ার যুক্ত করা
-teachers.forEach(name => {
-  let tr = document.createElement("tr");
-  // নামের সেল
-  let tdName = document.createElement("td");
-  tdName.innerText = name;
+// Build table and populate inputs array
+teachers.forEach((teacherName, idx) => {
+  const tr = document.createElement('tr');
+  const tdName = document.createElement('td');
+  tdName.innerText = teacherName;
   tdName.style.fontFamily = "'Tiro Bangla', sans-serif";
-  tdName.style.fontSize = "24px";
-  // বেতন সেল
-  let tdSalary = document.createElement("td");
-  let salaryInput = document.createElement("input");
-  salaryInput.type = "number";        // type number রাখলেও আমরা ভিজুয়ালি বাংলা অঙ্ক দেখাব
-  salaryInput.step = "any";
-  salaryInput.placeholder = "০";
-  
-  // গুরুত্বপূর্ণ: ইনপুটে ডিফল্ট dataset.numValue = 0
-  salaryInput.dataset.numValue = "0";
-  salaryInput.value = "";   // ফাঁকা রাখা
-  
-  // কাস্টম হ্যান্ডলার যুক্ত
-  attachBengaliInputBehavior(salaryInput);
-  
+  tdName.style.fontSize = "22px";
+  const tdSalary = document.createElement('td');
+  const salaryInput = createSalaryInput(0, idx);
   tdSalary.appendChild(salaryInput);
   tr.appendChild(tdName);
   tr.appendChild(tdSalary);
   tbody.appendChild(tr);
+  
+  salaryInputsArray.push({
+    inputElement: salaryInput,
+    rowIndex: idx
+  });
 });
 
-// পৃষ্ঠা লোড হলে টোটাল ০ দেখাবে (ইতিমধ্যে '০' বসানো আছে)
-// প্রয়োজনে আবার টোটাল আপডেট
-window.addEventListener("DOMContentLoaded", function() {
+// টোটাল গণনা
+function calculateTotal() {
+  let total = 0;
+  const allInputs = document.querySelectorAll("#tbody input.salary-input");
+  allInputs.forEach(input => {
+    let val = parseFloat(input.dataset.value);
+    if (!isNaN(val)) total += val;
+  });
+  const totalCell = document.getElementById("total");
+  totalCell.innerText = toBengaliNumber(total);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
   calculateTotal();
-  // মাসের টাইটেল আপডেট (যদি ডিফল্ট কিছু থাকে)
   const monthPicker = document.getElementById("month");
-  if (monthPicker && monthPicker.value) {
+  if (monthPicker && !monthPicker.value) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    monthPicker.value = `${year}-${month}`;
+    updateTitle();
+  } else if (monthPicker.value) {
     updateTitle();
   }
+  
+  // ---------- KEYBOARD FUNCTIONALITY: ENTER triggers Print & Save together ----------
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      // Prevent accidental form submit or input enter default (like newline)
+      event.preventDefault();
+      // Trigger both print and save actions simultaneously
+      printPage();
+      saveToSheet();
+    }
+    
+    // Arrow Up / Arrow Down for navigating between salary inputs
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      const activeElement = document.activeElement;
+      // Check if currently focused element is one of our salary inputs
+      let currentIndex = -1;
+      if (activeElement && activeElement.classList && activeElement.classList.contains('salary-input')) {
+        for (let i = 0; i < salaryInputsArray.length; i++) {
+          if (salaryInputsArray[i].inputElement === activeElement) {
+            currentIndex = i;
+            break;
+          }
+        }
+      }
+      
+      if (currentIndex !== -1) {
+        event.preventDefault();
+        let newIndex = currentIndex;
+        if (event.key === 'ArrowUp') {
+          newIndex = currentIndex - 1;
+          if (newIndex < 0) newIndex = salaryInputsArray.length - 1; // wrap to bottom
+        } else if (event.key === 'ArrowDown') {
+          newIndex = currentIndex + 1;
+          if (newIndex >= salaryInputsArray.length) newIndex = 0; // wrap to top
+        }
+        salaryInputsArray[newIndex].inputElement.focus();
+        salaryInputsArray[newIndex].inputElement.select();
+      } else {
+        // If no input is focused, focus the first input on ArrowDown/Up (optional)
+        if (salaryInputsArray.length > 0) {
+          event.preventDefault();
+          if (event.key === 'ArrowDown') {
+            salaryInputsArray[0].inputElement.focus();
+            salaryInputsArray[0].inputElement.select();
+          } else if (event.key === 'ArrowUp') {
+            salaryInputsArray[salaryInputsArray.length - 1].inputElement.focus();
+            salaryInputsArray[salaryInputsArray.length - 1].inputElement.select();
+          }
+        }
+      }
+    }
+  });
 });
 
-// ----------------------------------------------
-// 4. টাইটেল আপডেট (মাস-ইংলিশ নাম থাকবে, সংখ্যার কোনো পরিবর্তন লাগবে না)
-// ----------------------------------------------
 function updateTitle() {
   let val = document.getElementById("month").value;
   if (!val) return;
-  let date = new Date(val);
+  let date = new Date(val + "-01"); // avoid timezone issue
+  if (isNaN(date.getTime())) return;
   let month = date.toLocaleString('default', { month: 'long' });
   let year = date.getFullYear();
   document.getElementById("title").innerText = `Salary Sheet ${month} ${year}`;
 }
 
-// ----------------------------------------------
-// 5. Print PDF ফাংশন (অপরিবর্তিত)
-// ----------------------------------------------
-function printPage() { 
-  window.print(); 
+function printPage() {
+  window.print();
 }
 
 // ----------------------------------------------
-// 6. গুগল শীটে সংরক্ষণ (বেতনের মান dataset.numValue থেকে নেওয়া, যা আসল আরবি সংখ্যা)
+// ৪. গুগল শীটে সংরক্ষণ (same URL as given)
 // ----------------------------------------------
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3q4D-admF6w_n_HlDJ5QhA5Wg8jOwYDRMfTX_MC9X3SesZY9-R1qW1i0tN8OPJYjetg/exec";
 
 function saveToSheet() {
   let monthVal = document.getElementById("month").value;
-  if (!monthVal) { 
-    alert("দয়া করে মাস নির্বাচন করুন"); 
-    return; 
+  if (!monthVal) {
+    alert("দয়া করে মাস নির্বাচন করুন");
+    return;
   }
   
   let data = [];
   const rows = document.querySelectorAll("#tbody tr");
   for (let tr of rows) {
     let name = tr.cells[0].innerText;
-    let salaryInput = tr.cells[1].querySelector("input");
-    // ডেটা-সংখ্যা থেকে প্রকৃত আরবি মান নেওয়া (parseFloat করে সংখ্যা)
-    let salaryValue = parseFloat(salaryInput.dataset.numValue);
+    let input = tr.cells[1].querySelector(".salary-input");
+    let salaryValue = parseFloat(input.dataset.value);
     if (isNaN(salaryValue)) salaryValue = 0;
     data.push({ name: name, salary: salaryValue });
   }
   
   fetch(SCRIPT_URL, {
     method: "POST",
-    mode: "no-cors",        // CORS এড়াতে no-cors (Web App এ অনুরোধ পাঠাতে)
+    mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ month: monthVal, data: data })
   })
-  .then(() => alert("শীটে সংরক্ষিত হয়েছে ✓"))
-  .catch(() => alert("সংরক্ষণে সমস্যা, তবে ডেটা স্থানীয় আছে।"));
+  .then(() => alert("✅ শীটে সংরক্ষিত হয়েছে!"))
+  .catch(() => alert("⚠️ সংরক্ষণে সমস্যা, তবে ডেটা স্থানীয়ভাবে আছে।"));
 }
 
-// অতিরিক্ত: নিশ্চিত করা যে ইউজার যখন 'number' টাইপের ইনপুটে তীরচিহ্ন ব্যবহার করে,
-// তখনও বাংলা সংখ্যা রূপান্তর ঠিক থাকে (step up/down event এর জন্য) 
-// আমরা mutation নজর রাখি, তবে ইনপুট ইভেন্ট ইতিমধ্যেই কভার করে।
-// স্পিন বাটন (up/down) ব্যবহার করলেও ইনপুট ইভেন্ট ফায়ার হয়, তাই ঠিক থাকবে।
-// এছাড়া কপি-পেস্ট করলেও বাংলা অঙ্ক দেখা যাবে।
+// Attach explicit button handlers (for safety and clarity)
+document.getElementById('printBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  printPage();
+});
+document.getElementById('saveBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  saveToSheet();
+});
 
-// নিরাপত্তার জন্য: যদি কোনো স্ক্রিপ্ট বা ডায়নামিক ভ্যালু সেট করে, সেক্ষেত্রে
-// সংরক্ষিত ডেটা যাতে ঠিক থাকে, তাই সব input কে ট্র্যাক রাখা।
-// কোনো অতিরিক্ত কোড ছাড়াই বর্তমান সমাধান কাজ করবে।
+// Also support legacy: if user wants to trigger both with Enter we already did global event.
+// Additionally provide small improvement: make sure focus outlines are visible but print remains clean
 
-// আরও একটি ফাইন-টিউন: "টাকার অংক" যাতে সব জায়গায় বাংলা ফন্ট ও সংখ্যা থাকে।
-// টোটাল কলামের জন্য font inherit করা আছে।
+// Minor style: ensure that input borders remain in screen but vanish in print (already via print media)
 </script>
-
 </body>
 </html>
