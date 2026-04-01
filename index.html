@@ -579,33 +579,32 @@ function printPage() {
 // ----------------------------------------------
 // ৪. গুগল শীটে সংরক্ষণ (same URL as given)
 // ----------------------------------------------
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3q4D-admF6w_n_HlDJ5QhA5Wg8jOwYDRMfTX_MC9X3SesZY9-R1qW1i0tN8OPJYjetg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvlUXtemO2wmAPrvZIsUDWx7eforptk8UJtTzTceUnTR67JHbbomvbwtOeHho25cxSAQ/exec";
 
-function saveToSheet() {
+function saveToSheet(){
   let monthVal = document.getElementById("month").value;
-  if (!monthVal) {
-    alert("দয়া করে মাস নির্বাচন করুন");
-    return;
-  }
-  
+  if(!monthVal){ alert("Select month first"); return; }
+
   let data = [];
-  const rows = document.querySelectorAll("#tbody tr");
-  for (let tr of rows) {
+
+  document.querySelectorAll("#tbody tr").forEach(tr=>{
     let name = tr.cells[0].innerText;
-    let input = tr.cells[1].querySelector(".salary-input");
-    let salaryValue = parseFloat(input.dataset.value);
-    if (isNaN(salaryValue)) salaryValue = 0;
-    data.push({ name: name, salary: salaryValue });
-  }
-  
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ month: monthVal, data: data })
+    let salary = tr.querySelector(".salary").value || 0;
+    let bonus = tr.querySelector(".bonus").value || 0;
+
+    data.push({ name, salary, bonus });
+  });
+
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    body: JSON.stringify({
+      month: monthVal,
+      data: data
+    })
   })
-  .then(() => alert("✅ শীটে সংরক্ষিত হয়েছে!"))
-  .catch(() => alert("⚠️ সংরক্ষণে সমস্যা, তবে ডেটা স্থানীয়ভাবে আছে।"));
+  .then(res=>res.text())
+  .then(()=>alert("Saved Successfully"))
+  .catch(()=>alert("Error"));
 }
 
 // Attach explicit button handlers (for safety and clarity)
