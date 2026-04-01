@@ -2,86 +2,163 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ফি ম্যানেজমেন্ট</title>
-  <!-- Google Fonts: Poppins + Tiro Bangla -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tiro+Bangla&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- pdfmake -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Book Antiqua', serif; background:#f5f5f5; padding:20px; }
+
+    .page { width:800px; margin:auto; background:white; padding:20px; border:1px solid black; }
+
+    .header { display:flex; align-items:center; border-bottom:2px solid black; padding-bottom:10px; }
+
+  .logo {
+  width: 120px;
+  transform: translate(40px, 0px);
+}
+
+    .header-text { flex:1; text-align:center; position:relative; }
+
+    .school-name { font-family:'Wide Latin', serif; font-size:28px; font-weight:bold; }
+
+    .school-name-bn { font-family:'Tiro Bangla', serif; font-size:40px; margin-top:18px; }
+
+    .emis { position:absolute; right:50px; top:40px; font-size:14px; font-family:'Book Antiqua', serif; }
+
+    .sub { font-size:20px;}
+
+    h3 { text-align:center; margin-top:10px; font-size:25px; }
+
+  table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: "Triyo Bangla", sans-serif;
+  font-size: 16px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  font-family: "Triyo Bangla", sans-serif;
+  font-size: 24px;
+}
+
+    input { width:90%; padding:5px; text-align:center; }
+
+    .btn { margin-top:10px; padding:10px 20px; font-size:16px; cursor:pointer; }
+
+    @media print {
+      .btn, .month-select { display:none; }
+      input { border:none; }
+      .page { border:none; width:100%; margin:0; }
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo-area">
-        📘 ফি ম্যানেজমেন্ট <span>PRO</span>
-      </div>
-      <div class="nav-actions">
-        <button class="dark-toggle" id="darkModeToggle" aria-label="Dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
-    <div class="nav-menu" id="navMenu">
-      <a href="analysis.html"><i class="fas fa-chart-line"></i> Earnings বিশ্লেষণ</a>
-      <a href="sheet.html"><i class="fas fa-table"></i> সব ছাত্র</a>
-      <div class="nav-divider"></div>
-      <a href="mailto:muktadirshabab@hotmail.com"><i class="fas fa-headset"></i> সহায়তা</a>
-    </div>
-  </nav>
 
-<div class="container">
-  <h2><i class="fas fa-hand-holding-usd"></i> ফি ম্যানেজমেন্ট</h2>
-  <div class="sub">ছাত্রদের ফি সংক্রান্ত সব কার্যক্রম</div>
+<div class="page" id="page">
+  <div class="header">
+    <img class="logo" src="https://res.cloudinary.com/do1dejkkk/image/upload/v1774935468/western_logo_hg9fji.png">
 
-  <!-- SEARCH CARD -->
-  <div class="card">
-    <label for="searchId"><i class="fas fa-id-card"></i> Student ID লিখুন</label>
-    <div class="search-row">
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchId" placeholder="যেমন: ST-2025-001" autocomplete="off">
-      </div>
-      <button onclick="searchStudent()" id="searchBtn" class="btn-primary"><i class="fas fa-user-check"></i> সার্চ করুন</button>
+    <div class="header-text">
+      <div class="school-name">Western School & College</div>
+      <div class="school-name-bn">ওয়েস্টার্ন স্কুল এন্ড কলেজ</div>
+      <div class="emis">EMIS Code: 411191932</div>
+      <div class="sub" style="font-weight:bold;">NAC Vobon, Didar Market, CTG</div>
+      <div class="sub">ESTD-2016</div>
     </div>
   </div>
 
-  <!-- fee entry card - PROFESSIONAL LAYOUT -->
-  <div class="card" id="feeFormDiv" style="display:none;">
-    <h3><i class="fas fa-receipt"></i> ফি জমা ফর্ম</h3>
-    <label for="month"><i class="far fa-calendar-alt"></i> মাস নির্বাচন</label>
-    <select id="month"></select>
-    <div id="feeInputs" class="fee-form-grid"></div>
-    <div class="button-group">
-      <button onclick="submitFee()" id="submitBtn" class="btn-primary"><i class="fas fa-save"></i> ফি জমা দিন</button>
-      <button onclick="printReceipt()" id="printBtn" class="btn-secondary"><i class="fas fa-print"></i> রশিদ প্রিন্ট</button>
-    </div>
+  <div class="month-select" style="text-align:center; margin-top:10px;">
+    <input type="month" id="month" onchange="updateTitle()">
   </div>
 
-  <!-- NEW ACCOUNT CARD -->
-  <div class="card" id="createFormDiv" style="display:none;">
-    <h3>
-      <span class="create-header-icon"><i class="fas fa-user-graduate"></i></span> 
-      নতুন ছাত্র নিবন্ধন
-    </h3>
-    <div id="accountInputs" class="two-column-grid"></div>
-    <div id="validationErrors" style="color: #e54c4c; margin-bottom: 1rem; font-size: 0.85rem;"></div>
-    <div class="button-group">
-      <button onclick="createAccount()" id="createBtn" class="btn-primary"><i class="fas fa-check-circle"></i> অ্যাকাউন্ট তৈরি করুন</button>
-    </div>
-  </div>
+  <h3 id="title">শিক্ষক বেতন </h3>
+
+  <table id="salaryTable">
+    <thead>
+      <tr>
+        <th>নাম</th>
+        <th>বেতন</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+      <tr>
+        <th>মোট</th>
+        <th id="total">0</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
-<div class="loader-overlay" id="loader">
-  <div class="spinner"></div>
-</div>
-  <script src="script.js"></script>
+<button class="btn" onclick="printPage()">Print / Save PDF</button>
+<button class="btn" onclick="saveToSheet()">Save to Sheet</button>
+
+<script>
+const teachers = [
+"প্রিন্সিপাল স্যার","আয়শা বেগম","শারমিন আক্তার রকি","জবা শ্রী দেব","শারমিন সুলতানা","সুমি নন্দি","রিমি চৌধুরী","নাদিয়াতুল জান্নাত","ফারজানা আক্তার","নাজমিনা আক্তার রিমা","সাইফুল ইসলাম","সুমাইয়া ইদ্রিস","একরামুল হক","তাজুল ইসলাম","সায়রা বেগম"
+];
+
+const tbody = document.getElementById("tbody");
+
+teachers.forEach(name => {
+  let tr = document.createElement("tr");
+  tr.innerHTML = `<td>${name}</td><td><input type="number" oninput="calculateTotal()"></td>`;
+  tbody.appendChild(tr);
+});
+
+function calculateTotal(){
+  let total=0;
+  document.querySelectorAll("input[type='number']").forEach(i=>{
+    total += parseFloat(i.value)||0;
+  });
+  document.getElementById("total").innerText = total;
+}
+
+function updateTitle(){
+  let val = document.getElementById("month").value;
+  if(!val) return;
+
+  let date = new Date(val);
+  let month = date.toLocaleString('default',{month:'long'});
+  let year = date.getFullYear();
+
+  document.getElementById("title").innerText = `Salary Sheet ${month} ${year}`;
+}
+
+function printPage(){ window.print(); }
+
+// Google Apps Script Web App URL বসাও এখানে
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3q4D-admF6w_n_HlDJ5QhA5Wg8jOwYDRMfTX_MC9X3SesZY9-R1qW1i0tN8OPJYjetg/exec";
+
+function saveToSheet(){
+  let monthVal = document.getElementById("month").value;
+  if(!monthVal){ alert("Select month first"); return; }
+
+  let data = [];
+  document.querySelectorAll("#tbody tr").forEach(tr=>{
+    let name = tr.cells[0].innerText;
+    let salary = tr.cells[1].children[0].value || 0;
+    data.push({name, salary});
+  });
+
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    body: JSON.stringify({month:monthVal, data:data})
+  })
+  .then(res=>res.text())
+  .then(msg=>alert("Saved to Sheet"))
+  .catch(()=>alert("Error"));
+}
+</script>
 
 </body>
 </html>
