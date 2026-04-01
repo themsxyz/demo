@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Salary</title>
+  <title>Salary System - Bonus & Dynamic Teachers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
@@ -18,9 +18,8 @@
       padding: 30px 20px; 
       margin: 0;
     }
-
     .page { 
-      width: 900px; 
+      width: 1100px; 
       max-width: 100%;
       margin: auto; 
       background: white; 
@@ -29,7 +28,6 @@
       box-shadow: 0 20px 35px rgba(0,0,0,0.1);
       border: none;
     }
-
     .header { 
       display: flex; 
       align-items: center; 
@@ -39,33 +37,28 @@
       flex-wrap: wrap;
       position: relative;
     }
-
     .logo {
       width: 110px;
       transform: translate(10px, 0px);
     }
-
     .header-text { 
       flex: 1; 
       text-align: center; 
       position: relative; 
       padding-bottom: 28px;
     }
-
     .school-name { 
       font-family: 'Wide Latin', serif; 
       font-size: 26px; 
       font-weight: bold; 
       letter-spacing: 1px;
     }
-
     .school-name-bn { 
       font-family: 'Tiro Bangla', serif; 
       font-size: 36px; 
       margin-top: 12px; 
       color: #1e3c72;
     }
-
     .emis { 
       position: absolute;
       right: 0;
@@ -76,12 +69,10 @@
       padding: 0;
       color: #555;
     }
-
     .sub { 
       font-size: 18px;
       color: #444;
     }
-
     h3 { 
       text-align: center; 
       margin: 20px 0 15px 0; 
@@ -93,226 +84,119 @@
       padding-bottom: 6px;
       width: auto;
     }
-
-    /* টেবিল - তিরো বাংলা ফন্ট - print-ready black borders */
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
       font-family: 'Tiro Bangla', 'Segoe UI', sans-serif;
       font-size: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-
     th, td {
-      border: 1px solid #000000;  /* Solid black border for print & screen */
-      padding: 12px 8px;
+      border: 1px solid #000000;
+      padding: 10px 6px;
       text-align: center;
       font-family: 'Tiro Bangla', 'Segoe UI', sans-serif;
-      font-size: 22px;
+      font-size: 20px;
     }
-
     th {
       background-color: #f8fafc;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 22px;
       color: #0f2b4d;
-      border: 1px solid #000000;
     }
-
-    /* ইনপুট ফিল্ড - কাস্টম, সুন্দর, বাংলা ফন্ট */
-    input.salary-input {
+    input {
       width: 90%;
-      padding: 8px 12px;
+      padding: 6px 8px;
       text-align: center;
       font-family: 'Tiro Bangla', monospace;
-      font-size: 20px;
+      font-size: 18px;
       border: 1px solid #cbd5e0;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #fffef7;
       transition: all 0.2s ease;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
     }
-    input.salary-input:focus {
+    input:focus {
       outline: none;
       border-color: #1e3c72;
       box-shadow: 0 0 0 3px rgba(30,60,114,0.2);
     }
-
-    /* মোট ঘর হাইলাইট */
+    .total-cell {
+      background-color: #e6f4e8;
+      font-weight: bold;
+    }
     tfoot th {
       background-color: #e9f0f9;
-      font-size: 24px;
-      border: 1px solid #000000;
+      font-size: 22px;
     }
-    #total {
-      font-weight: bold;
-      color: #2c5a2e;
-      background-color: #e6f4e8;
-    }
-
-    /* বাটন ডিজাইন */
-    .btn-group {
+    .btn-group, .action-group {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 20px;
       display: flex;
-      gap: 20px;
+      gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
     }
     .btn {
-      padding: 12px 28px;
-      font-size: 18px;
+      padding: 10px 24px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       border: none;
       border-radius: 40px;
       background: linear-gradient(135deg, #1e3c72, #2b4c8a);
       color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.1s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease;
       font-family: 'Book Antiqua', 'Segoe UI', sans-serif;
     }
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
       background: linear-gradient(135deg, #2b4c8a, #1e3c72);
     }
-    .btn:active {
-      transform: translateY(1px);
+    .btn-danger {
+      background: linear-gradient(135deg, #a13e2d, #c0392b);
     }
-
-    /* মাস সিলেক্টর - ডেট পিকার কাস্টম স্টাইল */
     .month-select {
       text-align: center;
       margin: 15px 0 5px;
     }
     .month-select input {
-      padding: 10px 20px;
+      padding: 8px 20px;
       font-size: 18px;
       border-radius: 40px;
       border: 1px solid #cbd5e0;
       background: white;
-      font-family: 'Book Antiqua', monospace;
-      cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .month-select input:hover {
-      border-color: #1e3c72;
-    }
-    .month-select input:focus {
-      outline: none;
-      border-color: #1e3c72;
-      box-shadow: 0 0 0 3px rgba(30,60,114,0.2);
-    }
-    ::-webkit-calendar-picker-indicator {
-      background-color: #eef2f3;
-      padding: 5px;
-      border-radius: 20px;
       cursor: pointer;
     }
-
-    /* ========== PRINT STYLES: Black borders enforced, no input borders visible ========== */
+    /* PRINT STYLES: Only show Name and Total columns */
     @media print {
-      body {
-        background: white;
-        padding: 0;
-        margin: 0;
-      }
-      .page {
-        width: 100%;
-        margin: 0;
-        padding: 10px 12px;
-        border-radius: 0;
-        box-shadow: none;
-        page-break-after: avoid;
-        page-break-inside: avoid;
-      }
-      .btn-group, .month-select {
-        display: none;
-      }
-      /* Remove input box border and background for print — show clean text like table cell */
-      input.salary-input {
+      body { background: white; padding: 0; margin: 0; }
+      .page { width: 100%; margin: 0; padding: 10px; box-shadow: none; }
+      .btn-group, .action-group, .month-select { display: none; }
+      input {
         border: none !important;
         background: transparent !important;
-        box-shadow: none !important;
-        padding: 4px;
-        font-size: 20px;
-        width: 100%;
+        padding: 2px;
+        font-size: 18px;
         text-align: center;
-        font-family: 'Tiro Bangla', serif;
         color: black;
       }
-      /* Ensure table borders are solid black */
-      table, th, td {
-        border: 1px solid #000000 !important;
-        border-collapse: collapse;
+      table, th, td { border: 1px solid #000000 !important; }
+      th, td { padding: 5px; }
+      /* Hide Base, Bonus, Action columns */
+      th:nth-child(2), td:nth-child(2),
+      th:nth-child(3), td:nth-child(3),
+      th:nth-child(5), td:nth-child(5) {
+        display: none;
       }
-      th, td {
-        border: 1px solid #000000 !important;
+      /* Ensure footer total row only shows total for total column */
+      tfoot th:nth-child(2), tfoot td:nth-child(2),
+      tfoot th:nth-child(3), tfoot td:nth-child(3),
+      tfoot th:nth-child(5), tfoot td:nth-child(5) {
+        display: none;
       }
-      .header {
-        border-bottom-width: 1px;
-        margin-bottom: 5px;
-        padding-bottom: 8px;
-      }
-      .logo {
-        width: 150px;
-        transform: translate(40px, 0px);
-      }
-      .school-name {
-        font-size: 27px;
-      }
-      .school-name-bn {
-        font-size: 32px;
-        margin-top: 10px;
-      }
-      .emis {
-        position: absolute;
-        top: 34px;
-        right: 20px;
-        text-align: right;
-        background: none;
-        font-size: 15px;
-        margin-top: 0;
-        padding: 0;
-      }
-      .sub {
-        font-size: 22px;
-      }
-      h3 {
-        font-size: 28px;
-        margin: 8px 0;
-      }
-      table {
-        font-size: 22px;
-        margin-top: 8px;
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-      th, td {
-        padding: 5px 4px;
-        font-size: 20px;
-      }
-      th {
-        font-size: 26px;
-      }
-      tfoot th {
-        font-size: 26px;
-      }
-      input.salary-input {
-        font-size: 26px;
-        padding: 2px;
-      }
-      .page, .header, table, tbody, thead, tfoot {
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-      @page {
-        margin: 0.5cm;
-        size: auto;
-      }
+      .total-cell { background: none; }
+      @page { margin: 0.5cm; }
     }
   </style>
 </head>
@@ -325,48 +209,52 @@
       <div class="school-name">Western School & College</div>
       <div class="school-name-bn">ওয়েস্টার্ন স্কুল এন্ড কলেজ</div>
       <div class="emis">EMIS Code: 411191932</div>
-      <div class="sub" style="font-weight:bold;">NAC Vobon, Didar Market, CTG</div>
+      <div class="sub">NAC Vobon, Didar Market, CTG</div>
       <div class="sub">ESTD-2016</div>
     </div>
   </div>
 
   <div class="month-select">
-    <input type="month" id="month" onchange="updateTitle()">
+    <input type="month" id="month" onchange="loadData()">
   </div>
 
   <div style="text-align:center;">
-    <h3 id="title">শিক্ষক বেতন</h3>
+    <h3 id="title">শিক্ষক বেতন (মূল + বোনাস)</h3>
   </div>
 
-<table id="salaryTable">
-  <thead>
-    <tr>
-      <th>নাম</th>
-      <th>বেতন (টাকা)</th>
-      <th>বোনাস (টাকা)</th>
-    </tr>
-  </thead>
+  <table id="salaryTable">
+    <thead>
+      <tr>
+        <th>নাম</th>
+        <th>মূল বেতন (টাকা)</th>
+        <th>বোনাস (টাকা)</th>
+        <th>মোট বেতন (টাকা)</th>
+        <th style="width:60px">অ্যাকশন</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+      <tr>
+        <th>মোট</th>
+        <th id="totalBase">০</th>
+        <th id="totalBonus">০</th>
+        <th id="totalAll">০</th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
 
-  <tbody id="tbody"></tbody>
-
-  <tfoot>
-    <tr>
-      <th>মোট</th>
-      <th colspan="2" id="total">০</th>
-    </tr>
-  </tfoot>
-</table>
-</div>
-
-<div class="btn-group">
-  <button class="btn" id="printBtn">🖨️ Print / Save PDF</button>
-  <button class="btn" id="saveBtn">📤 Save to Sheet</button>
+  <div class="action-group">
+    <button class="btn" id="addTeacherBtn">➕ নতুন শিক্ষক যোগ করুন</button>
+  </div>
+  <div class="btn-group">
+    <button class="btn" id="printBtn">🖨️ Print / PDF</button>
+    <button class="btn" id="saveBtn">📤 Save to Sheet</button>
+  </div>
 </div>
 
 <script>
-// ----------------------------------------------
-// ১. বাংলা ও আরবি ডিজিট কনভার্টার
-// ----------------------------------------------
+// ---------- Digit Conversion ----------
 const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
 const arabicDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -375,11 +263,8 @@ function toBengaliNumber(num) {
   const numStr = num.toString();
   let result = '';
   for (let ch of numStr) {
-    if (ch >= '0' && ch <= '9') {
-      result += bengaliDigits[parseInt(ch)];
-    } else {
-      result += ch;
-    }
+    if (ch >= '0' && ch <= '9') result += bengaliDigits[parseInt(ch)];
+    else result += ch;
   }
   return result;
 }
@@ -389,241 +274,307 @@ function fromBengaliToArabic(str) {
   let converted = '';
   for (let ch of str) {
     const idx = bengaliDigits.indexOf(ch);
-    if (idx !== -1) {
-      converted += arabicDigits[idx];
-    } else {
-      converted += ch;
-    }
+    if (idx !== -1) converted += arabicDigits[idx];
+    else converted += ch;
   }
   return converted;
 }
 
-// ----------------------------------------------
-// ২. শিক্ষক তালিকা
-// ----------------------------------------------
-const teachers = [
-  "প্রিন্সিপাল স্যার","আয়শা বেগম","শারমিন আক্তার রকি","জবা শ্রী দেব","শারমিন সুলতানা",
-  "সুমি নন্দি","রিমি চৌধুরী","নাদিয়াতুল জান্নাত","ফারজানা আক্তার","নাজমিনা আক্তার রিমা",
-  "সাইফুল ইসলাম","সুমাইয়া ইদ্রিস","একরামুল হক","তাজুল ইসলাম","সায়রা বেগম"
+// Helper to parse numeric value from input
+function parseInputValue(input) {
+  let raw = input.value;
+  let arabic = fromBengaliToArabic(raw);
+  let clean = arabic.replace(/[^0-9.-]/g, '');
+  let parsed = parseFloat(clean);
+  return isNaN(parsed) ? 0 : parsed;
+}
+
+// ---------- Default teacher list (in Bengali) ----------
+const DEFAULT_TEACHERS = [
+  "প্রিন্সিপাল স্যার", "আয়শা বেগম", "শারমিন আক্তার রকি", "জবা শ্রী দেব", "শারমিন সুলতানা",
+  "সুমি নন্দি", "রিমি চৌধুরী", "নাদিয়াতুল জান্নাত", "ফারজানা আক্তার", "নাজমিনা আক্তার রিমা",
+  "সাইফুল ইসলাম", "সুমাইয়া ইদ্রিস", "একরামুল হক", "তাজুল ইসলাম", "সায়রা বেগম"
 ];
 
-const tbody = document.getElementById("tbody");
+let tbody = document.getElementById("tbody");
 
-// ----------------------------------------------
-// ৩. ইনপুট ফিল্ড তৈরি (ইউজার সহজেই সংখ্যা ইনপুট করতে পারে) + store reference array for keyboard nav
-// ----------------------------------------------
-let salaryInputsArray = []; // store { inputElement, rowIndex }
-
-function createSalaryInput(initialValue = 0, rowIndex) {
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'salary-input';
-  input.placeholder = '০';
-  input.setAttribute('data-row', rowIndex);
-  
-  let numericValue = initialValue;
-  input.dataset.value = numericValue;
-  input.value = numericValue === 0 ? '' : toBengaliNumber(numericValue);
-  
-  function updateInputFromNumeric() {
-    let num = parseFloat(input.dataset.value);
-    if (isNaN(num)) num = 0;
-    input.dataset.value = num;
-    if (num === 0 && input.value === '') {
-      // keep empty
-    } else {
-      input.value = toBengaliNumber(num);
-    }
-    calculateTotal();
-  }
-  
-  input.addEventListener('input', function(e) {
-    let raw = e.target.value;
-    let arabicStr = fromBengaliToArabic(raw);
-    let clean = arabicStr.replace(/[^0-9.-]/g, '');
-    let parsed = parseFloat(clean);
-    if (isNaN(parsed)) parsed = 0;
-    input.dataset.value = parsed;
-    if (parsed === 0 && raw === '') {
-      input.value = '';
-    } else {
-      input.value = toBengaliNumber(parsed);
-    }
-    calculateTotal();
-  });
-  
-  input.addEventListener('blur', function() {
-    let num = parseFloat(input.dataset.value);
-    if (isNaN(num)) num = 0;
-    input.dataset.value = num;
-    if (num === 0 && input.value === '') {
-      // empty
-    } else {
-      input.value = toBengaliNumber(num);
-    }
-    calculateTotal();
-  });
-  
-  return input;
-}
-
-// Build table and populate inputs array
-teachers.forEach((teacherName, idx) => {
+// ---------- Create a teacher row ----------
+function createTeacherRow(name = '', base = 0, bonus = 0) {
   const tr = document.createElement('tr');
-  const tdName = document.createElement('td');
-  tdName.innerText = teacherName;
-  tdName.style.fontFamily = "'Tiro Bangla', sans-serif";
-  tdName.style.fontSize = "22px";
-  const tdSalary = document.createElement('td');
-  const salaryInput = createSalaryInput(0, idx);
-  tdSalary.appendChild(salaryInput);
-  tr.appendChild(tdName);
-  tr.appendChild(tdSalary);
-  tbody.appendChild(tr);
   
-  salaryInputsArray.push({
-    inputElement: salaryInput,
-    rowIndex: idx
+  // Name input
+  const tdName = document.createElement('td');
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.value = name;
+  nameInput.placeholder = 'শিক্ষকের নাম';
+  nameInput.classList.add('teacher-name');
+  tdName.appendChild(nameInput);
+  
+  // Base salary input
+  const tdBase = document.createElement('td');
+  const baseInput = document.createElement('input');
+  baseInput.type = 'text';
+  baseInput.value = base === 0 ? '' : toBengaliNumber(base);
+  baseInput.classList.add('base-salary');
+  tdBase.appendChild(baseInput);
+  
+  // Bonus input
+  const tdBonus = document.createElement('td');
+  const bonusInput = document.createElement('input');
+  bonusInput.type = 'text';
+  bonusInput.value = bonus === 0 ? '' : toBengaliNumber(bonus);
+  bonusInput.classList.add('bonus');
+  tdBonus.appendChild(bonusInput);
+  
+  // Total display
+  const tdTotal = document.createElement('td');
+  const totalSpan = document.createElement('span');
+  totalSpan.classList.add('total-value');
+  totalSpan.innerText = toBengaliNumber(base + bonus);
+  tdTotal.appendChild(totalSpan);
+  
+  // Remove button
+  const tdAction = document.createElement('td');
+  const removeBtn = document.createElement('button');
+  removeBtn.innerText = '🗑️';
+  removeBtn.classList.add('btn', 'btn-danger');
+  removeBtn.style.padding = '4px 12px';
+  removeBtn.style.fontSize = '14px';
+  removeBtn.onclick = () => {
+    tr.remove();
+    updateAllTotals();
+    updateInputsArray();
+  };
+  tdAction.appendChild(removeBtn);
+  
+  tr.appendChild(tdName);
+  tr.appendChild(tdBase);
+  tr.appendChild(tdBonus);
+  tr.appendChild(tdTotal);
+  tr.appendChild(tdAction);
+  
+  // Event listeners for real‑time total update
+  const updateRowTotal = () => {
+    let baseVal = parseInputValue(baseInput);
+    let bonusVal = parseInputValue(bonusInput);
+    let total = baseVal + bonusVal;
+    totalSpan.innerText = toBengaliNumber(total);
+    tr.dataset.base = baseVal;
+    tr.dataset.bonus = bonusVal;
+    tr.dataset.total = total;
+    updateAllTotals();
+  };
+  
+  baseInput.addEventListener('input', function() {
+    let num = parseInputValue(this);
+    this.value = num === 0 ? '' : toBengaliNumber(num);
+    updateRowTotal();
   });
-});
-
-// টোটাল গণনা
-function calculateTotal() {
-  let total = 0;
-  const allInputs = document.querySelectorAll("#tbody input.salary-input");
-  allInputs.forEach(input => {
-    let val = parseFloat(input.dataset.value);
-    if (!isNaN(val)) total += val;
+  baseInput.addEventListener('blur', function() {
+    let num = parseInputValue(this);
+    this.value = num === 0 ? '' : toBengaliNumber(num);
+    updateRowTotal();
   });
-  const totalCell = document.getElementById("total");
-  totalCell.innerText = toBengaliNumber(total);
+  
+  bonusInput.addEventListener('input', function() {
+    let num = parseInputValue(this);
+    this.value = num === 0 ? '' : toBengaliNumber(num);
+    updateRowTotal();
+  });
+  bonusInput.addEventListener('blur', function() {
+    let num = parseInputValue(this);
+    this.value = num === 0 ? '' : toBengaliNumber(num);
+    updateRowTotal();
+  });
+  
+  tr.dataset.base = base;
+  tr.dataset.bonus = bonus;
+  tr.dataset.total = base + bonus;
+  
+  return tr;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  calculateTotal();
-  const monthPicker = document.getElementById("month");
-  if (monthPicker && !monthPicker.value) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    monthPicker.value = `${year}-${month}`;
-    updateTitle();
-  } else if (monthPicker.value) {
-    updateTitle();
-  }
-  
-  // ---------- KEYBOARD FUNCTIONALITY: ENTER triggers Print & Save together ----------
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      // Prevent accidental form submit or input enter default (like newline)
-      event.preventDefault();
-      // Trigger both print and save actions simultaneously
-      printPage();
-      saveToSheet();
-    }
-    
-    // Arrow Up / Arrow Down for navigating between salary inputs
-    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-      const activeElement = document.activeElement;
-      // Check if currently focused element is one of our salary inputs
-      let currentIndex = -1;
-      if (activeElement && activeElement.classList && activeElement.classList.contains('salary-input')) {
-        for (let i = 0; i < salaryInputsArray.length; i++) {
-          if (salaryInputsArray[i].inputElement === activeElement) {
-            currentIndex = i;
-            break;
-          }
-        }
-      }
-      
-      if (currentIndex !== -1) {
-        event.preventDefault();
-        let newIndex = currentIndex;
-        if (event.key === 'ArrowUp') {
-          newIndex = currentIndex - 1;
-          if (newIndex < 0) newIndex = salaryInputsArray.length - 1; // wrap to bottom
-        } else if (event.key === 'ArrowDown') {
-          newIndex = currentIndex + 1;
-          if (newIndex >= salaryInputsArray.length) newIndex = 0; // wrap to top
-        }
-        salaryInputsArray[newIndex].inputElement.focus();
-        salaryInputsArray[newIndex].inputElement.select();
-      } else {
-        // If no input is focused, focus the first input on ArrowDown/Up (optional)
-        if (salaryInputsArray.length > 0) {
-          event.preventDefault();
-          if (event.key === 'ArrowDown') {
-            salaryInputsArray[0].inputElement.focus();
-            salaryInputsArray[0].inputElement.select();
-          } else if (event.key === 'ArrowUp') {
-            salaryInputsArray[salaryInputsArray.length - 1].inputElement.focus();
-            salaryInputsArray[salaryInputsArray.length - 1].inputElement.select();
-          }
-        }
-      }
+// ---------- Populate table with default teachers ----------
+function loadDefaultTeachers() {
+  tbody.innerHTML = '';
+  DEFAULT_TEACHERS.forEach(name => {
+    tbody.appendChild(createTeacherRow(name, 0, 0));
+  });
+  updateAllTotals();
+  updateInputsArray();
+}
+
+// ---------- Update footer totals ----------
+function updateAllTotals() {
+  let totalBase = 0, totalBonus = 0, totalAll = 0;
+  const rows = document.querySelectorAll('#tbody tr');
+  rows.forEach(row => {
+    let base = parseFloat(row.dataset.base) || 0;
+    let bonus = parseFloat(row.dataset.bonus) || 0;
+    totalBase += base;
+    totalBonus += bonus;
+    totalAll += (base + bonus);
+  });
+  document.getElementById('totalBase').innerText = toBengaliNumber(totalBase);
+  document.getElementById('totalBonus').innerText = toBengaliNumber(totalBonus);
+  document.getElementById('totalAll').innerText = toBengaliNumber(totalAll);
+}
+
+// ---------- Refresh input array for keyboard navigation ----------
+function updateInputsArray() {
+  window.currentInputs = [];
+  const rows = document.querySelectorAll('#tbody tr');
+  rows.forEach((row, idx) => {
+    const nameInput = row.cells[0].querySelector('input');
+    const baseInput = row.cells[1].querySelector('input');
+    const bonusInput = row.cells[2].querySelector('input');
+    if (nameInput && baseInput && bonusInput) {
+      window.currentInputs.push({ rowIdx: idx, nameInput, baseInput, bonusInput });
     }
   });
-});
+}
+
+// ---------- Load data for selected month ----------
+async function loadData() {
+  let monthVal = document.getElementById('month').value;
+  if (!monthVal) return;
+  
+  const scriptUrl = 'YOUR_APPS_SCRIPT_URL';  // <-- Replace with your deployed URL
+  try {
+    const response = await fetch(`${scriptUrl}?month=${monthVal}`);
+    const teachers = await response.json();
+    tbody.innerHTML = '';
+    if (teachers && teachers.length > 0) {
+      teachers.forEach(t => {
+        tbody.appendChild(createTeacherRow(t.name, t.baseSalary, t.bonus));
+      });
+    } else {
+      // No data for this month → load default teachers
+      loadDefaultTeachers();
+    }
+    updateAllTotals();
+    updateInputsArray();
+    updateTitle();
+  } catch (err) {
+    console.error('Load error', err);
+    // On error, load default teachers
+    loadDefaultTeachers();
+    updateTitle();
+  }
+}
 
 function updateTitle() {
   let val = document.getElementById("month").value;
   if (!val) return;
-  let date = new Date(val + "-01"); // avoid timezone issue
-  if (isNaN(date.getTime())) return;
+  let date = new Date(val + "-01");
   let month = date.toLocaleString('default', { month: 'long' });
   let year = date.getFullYear();
-  document.getElementById("title").innerText = `Salary Sheet ${month} ${year}`;
+  document.getElementById("title").innerText = `Salary Sheet ${month} ${year} (মূল + বোনাস)`;
+}
+
+// ---------- Save to Google Sheets ----------
+async function saveToSheet() {
+  let monthVal = document.getElementById('month').value;
+  if (!monthVal) {
+    alert("দয়া করে মাস নির্বাচন করুন");
+    return;
+  }
+  
+  let data = [];
+  const rows = document.querySelectorAll('#tbody tr');
+  for (let row of rows) {
+    let name = row.cells[0].querySelector('input').value.trim();
+    if (name === '') continue; // skip rows without name
+    let baseSalary = parseFloat(row.dataset.base) || 0;
+    let bonus = parseFloat(row.dataset.bonus) || 0;
+    let total = baseSalary + bonus;
+    data.push({ name, baseSalary, bonus, total });
+  }
+  
+  if (data.length === 0) {
+    alert("কমপক্ষে একজন শিক্ষকের নাম দিন");
+    return;
+  }
+  
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxSMP1tqCkxDBZLfdm69G6kxn_2lTlj8uAccOeqWuEBJVWaf3fWqavisZ-lYXlTNFgCLw/exec';  // <-- Replace with your deployed URL
+  try {
+    await fetch(scriptUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ month: monthVal, teachers: data })
+    });
+    alert("✅ শীটে সংরক্ষিত হয়েছে!");
+  } catch (err) {
+    alert("⚠️ সংরক্ষণে সমস্যা, তবে ডেটা স্থানীয়ভাবে আছে।");
+  }
 }
 
 function printPage() {
   window.print();
 }
 
-// ----------------------------------------------
-// ৪. গুগল শীটে সংরক্ষণ (same URL as given)
-// ----------------------------------------------
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvlUXtemO2wmAPrvZIsUDWx7eforptk8UJtTzTceUnTR67JHbbomvbwtOeHho25cxSAQ/exec";
-
-function saveToSheet(){
-  let monthVal = document.getElementById("month").value;
-  if(!monthVal){ alert("Select month first"); return; }
-
-  let data = [];
-
-  document.querySelectorAll("#tbody tr").forEach(tr=>{
-    let name = tr.cells[0].innerText;
-    let salary = tr.querySelector(".salary").value || 0;
-    let bonus = tr.querySelector(".bonus").value || 0;
-
-    data.push({ name, salary, bonus });
-  });
-
-  fetch(SCRIPT_URL,{
-    method:"POST",
-    body: JSON.stringify({
-      month: monthVal,
-      data: data
-    })
-  })
-  .then(res=>res.text())
-  .then(()=>alert("Saved Successfully"))
-  .catch(()=>alert("Error"));
+// ---------- Add new teacher row ----------
+function addTeacher() {
+  tbody.appendChild(createTeacherRow('', 0, 0));
+  updateAllTotals();
+  updateInputsArray();
 }
 
-// Attach explicit button handlers (for safety and clarity)
-document.getElementById('printBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  printPage();
-});
-document.getElementById('saveBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  saveToSheet();
+// ---------- Keyboard Navigation (Enter + Arrows) ----------
+document.addEventListener('keydown', function(event) {
+  // Enter triggers both print and save
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    printPage();
+    saveToSheet();
+    return;
+  }
+  
+  // Arrow navigation across all input fields
+  if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+    const active = document.activeElement;
+    let allInputs = [];
+    document.querySelectorAll('#tbody input').forEach(inp => allInputs.push(inp));
+    if (allInputs.length === 0) return;
+    
+    let currentIndex = allInputs.indexOf(active);
+    if (currentIndex !== -1) {
+      event.preventDefault();
+      let newIndex = currentIndex;
+      if (event.key === 'ArrowUp') {
+        newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = allInputs.length - 1;
+      } else if (event.key === 'ArrowDown') {
+        newIndex = currentIndex + 1;
+        if (newIndex >= allInputs.length) newIndex = 0;
+      }
+      allInputs[newIndex].focus();
+      allInputs[newIndex].select();
+    } else {
+      // focus first input on arrow
+      if (allInputs.length > 0) {
+        event.preventDefault();
+        allInputs[0].focus();
+      }
+    }
+  }
 });
 
-// Also support legacy: if user wants to trigger both with Enter we already did global event.
-// Additionally provide small improvement: make sure focus outlines are visible but print remains clean
-
-// Minor style: ensure that input borders remain in screen but vanish in print (already via print media)
+// ---------- Initialization ----------
+window.addEventListener('DOMContentLoaded', () => {
+  const monthPicker = document.getElementById("month");
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  monthPicker.value = `${year}-${month}`;
+  loadData();
+  
+  document.getElementById('addTeacherBtn').addEventListener('click', addTeacher);
+  document.getElementById('printBtn').addEventListener('click', printPage);
+  document.getElementById('saveBtn').addEventListener('click', saveToSheet);
+});
 </script>
 </body>
 </html>
